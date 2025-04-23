@@ -111,9 +111,7 @@ const Dashboard: React.FC = () => {
                 <div className="flex justify-between items-center mb-5 text-green-600">
                     <span className="font-medium">Choose your delivery time &gt;</span>
                     <div className="w-8 h-8 bg-gray-200 rounded-full overflow-hidden flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                        </svg>
+                        <img src="/dashboard.png" alt="Dashboard Icon" className="h-5 w-5 text-gray-500" />
                     </div>
                 </div>
 
@@ -126,10 +124,9 @@ const Dashboard: React.FC = () => {
                 {/* Illustration */}
                 <div className="flex justify-center mb-6">
                     <img
-                        src="/path/to/illustration.png"
+                        src="/dashboard.png"
                         alt="Happy shopper with groceries"
-                        className="h-40"
-                        style={{ opacity: 0.8 }}
+                        className="h-60 w-auto"
                     />
                 </div>
 
@@ -603,9 +600,9 @@ const Dashboard: React.FC = () => {
                                                             <div className="w-full h-2 bg-gray-200 rounded-full">
                                                                 <div
                                                                     className={`h-full rounded-full ${index === 0 ? 'bg-red-500' :
-                                                                            index === 1 ? 'bg-green-500' :
-                                                                                index === 2 ? 'bg-yellow-500' :
-                                                                                    'bg-blue-500'
+                                                                        index === 1 ? 'bg-green-500' :
+                                                                            index === 2 ? 'bg-yellow-500' :
+                                                                                'bg-blue-500'
                                                                         }`}
                                                                     style={{ width: `${category.percentage}%` }}
                                                                 ></div>
