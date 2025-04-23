@@ -188,7 +188,7 @@ const Cart: React.FC = () => {
         </div>
 
         <button
-          className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+          className="w-full bg-second text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
           disabled={cartItems.length === 0}
         >
           Proceed to Checkout
