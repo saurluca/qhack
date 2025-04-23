@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import { createClient } from '@supabase/supabase-js';
 
