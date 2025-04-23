@@ -19,8 +19,7 @@ const sampleRecipes = [
     { id: 't5DNoGO26lM', title: 'Knoblauch Hummus', category: 'Middle Eastern', time: '10 min', difficulty: 'Easy' },
 ];
 
-const Cooking: React.FC = () => {
-    const [youtubeUrl, setYoutubeUrl] = useState('');
+const Cooking: React.FC = (youtubeUrl: string, setYoutubeUrl) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [recipeData, setRecipeData] = useState<{
