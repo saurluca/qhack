@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Cooking: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col pb-16 md:pb-0">
-            <Header />
             <main className="container mx-auto px-4 py-6 flex-grow">
                 <h1 className="text-2xl font-bold text-gray-800 mb-4">Cooking Mode</h1>
 
