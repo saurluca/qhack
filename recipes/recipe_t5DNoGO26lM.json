@@ -1,0 +1,19 @@
+{
+  "video_id": "t5DNoGO26lM",
+  "source_url": "https://youtube.com/shorts/t5DNoGO26lM?si=yoHFHrA59IyvCWuW",
+  "transcript": "Based on searching for 'Knoblauch Hummus recipe', found these potential sources:\n1. https://www.gutekueche.de/cremiges-knoblauch-humus-rezept-6550\n2. https://www.homemade.ch/rezepte/geroesteter-knoblauch-hummus-mit-frischen-kraeutern\n3. https://www.inspiredtaste.net/15938/easy-and-smooth-hummus-recipe/\n\nThis appears to be a recipe video from youtube with title: Knoblauch Hummus. Please extract the recipe based on typical recipes with this title.",
+  "instructions": [
+    "In the bowl of a food processor, combine the minced or crushed garlic and lemon juice. Let it rest for a few minutes to allow the garlic to soften.",
+    "Add the drained chickpeas, tahini, water (or aquafaba), and a pinch of salt to the food processor. Process the ingredients until a smooth consistency is achieved, stopping to scrape down the sides as necessary.",
+    "With the food processor running, slowly drizzle in the olive oil through the top. Continue processing until the hummus reaches the desired creaminess. Taste and adjust the seasoning with additional salt, if needed.",
+    "Transfer the hummus to a serving bowl, and garnish with your choice of toppings, such as whole chickpeas, paprika, fresh parsley, and a drizzle of olive oil.",
+    "Serve the garlic hummus with pita bread, chips, or veggies. Hummus can also be refrigerated in an airtight container for up to 1 week."
+  ],
+  "metadata": {
+    "extraction_timestamp": 1745433819,
+    "video_platform": "youtube",
+    "source_type": "internet_search",
+    "title": "Knoblauch Hummus",
+    "note": "Recipe extracted from internet search results, not directly from video content."
+  }
+}

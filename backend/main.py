@@ -9,6 +9,8 @@ from urllib.parse import urlparse, parse_qs
 import yt_dlp
 import googlesearch
 from recipe_extractor import HuggingFaceAPIProcessor
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 class LoggingManager:
     """Class for logging progress and updating the user during recipe extraction"""
@@ -457,6 +459,73 @@ def main():
         print(f"Error: {str(e)}")
         return 1
 
-# If this script is run directly, use the recipe extractor
+# Create Flask app
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes to allow requests from frontend
+
+# Initialize the recipe extractor with API key
+API_KEY = os.environ.get('HF_API_KEY', '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')
+extractor = None  # Will be initialized on first request
+
+# Flask routes
+@app.route('/extract-recipe', methods=['GET'])
+def extract_recipe():
+    """API endpoint to extract recipe from a video URL"""
+    global extractor
+    
+    # Initialize extractor if needed
+    if extractor is None:
+        extractor = RecipeExtractor(API_KEY)
+    
+    url = request.args.get('url')
+    if not url:
+        return jsonify({'error': 'No URL provided'}), 400
+    
+    try:
+        print(f"API request received for URL: {url}")
+        recipe_data = extractor.extract_from_url(url)
+        
+        # Process recipe data for structured response
+        video_id = VideoTranscriptExtractor.extract_video_id(url)
+        
+        # Prepare ingredients list
+        ingredients = recipe_data["recipe"]["ingredients"].split('\n')
+        cleaned_ingredients = []
+        for item in ingredients:
+            item = item.strip()
+            if item and not item.startswith("**"):
+                item = re.sub(r'^[-•*]\s*', '', item).strip()
+                cleaned_ingredients.append(item)
+        
+        # Prepare instructions list
+        instructions = process_instructions(recipe_data["recipe"]["instructions"])
+        
+        # Create response
+        response = {
+            'video_id': video_id,
+            'ingredients': cleaned_ingredients,
+            'instructions': instructions,
+            'metadata': {
+                'title': recipe_data.get('title', 'Recipe'),
+                'source_type': recipe_data.get('source_type', 'unknown')
+            }
+        }
+        
+        return jsonify(response)
+    
+    except Exception as e:
+        print(f"Error processing request: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+# Run the Flask app if script is executed directly
 if __name__ == "__main__":
-    sys.exit(main())
+    # Check if running as API server or command line tool
+    if len(sys.argv) > 1 and sys.argv[1] == '--server':
+        # Remove the --server argument
+        sys.argv.pop(1)
+        # Run the Flask app
+        print("Starting recipe extraction API server on http://localhost:5000")
+        app.run(host='0.0.0.0', port=5000, debug=True)
+    else:
+        # Run as command line tool
+        sys.exit(main())
