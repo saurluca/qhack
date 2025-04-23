@@ -3,6 +3,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Index: React.FC = () => {
+
+    // define an input stat
+
+    // calute root of input
+
+    // printing function 
+    
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <Header />
