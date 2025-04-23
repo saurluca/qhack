@@ -116,18 +116,18 @@ const Dashboard: React.FC = () => {
                         </svg>
                     </div>
                 </div>
-                
+
                 {/* Monthly Stats Title with Trophy Icon */}
                 <h1 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                    Your stats this month 
+                    Your stats this month
                     <span className="ml-2 text-amber-500">🏆</span>
                 </h1>
 
                 {/* Illustration */}
                 <div className="flex justify-center mb-6">
-                    <img 
-                        src="/path/to/illustration.png" 
-                        alt="Happy shopper with groceries" 
+                    <img
+                        src="/path/to/illustration.png"
+                        alt="Happy shopper with groceries"
                         className="h-40"
                         style={{ opacity: 0.8 }}
                     />
@@ -135,19 +135,19 @@ const Dashboard: React.FC = () => {
 
                 {/* Main Tab Navigation */}
                 <div className="flex justify-center mb-6 space-x-2">
-                    <button 
+                    <button
                         className={`px-5 py-2 rounded-full ${mainTab === 'sustainability' ? 'bg-green-500 text-white' : 'bg-green-100 text-green-700'}`}
                         onClick={() => setMainTab('sustainability')}
                     >
                         Sustainability
                     </button>
-                    <button 
+                    <button
                         className={`px-5 py-2 rounded-full ${mainTab === 'nutritional' ? 'bg-yellow-400 text-yellow-800' : 'bg-yellow-100 text-yellow-700'}`}
                         onClick={() => setMainTab('nutritional')}
                     >
                         Nutritional
                     </button>
-                    <button 
+                    <button
                         className={`px-5 py-2 rounded-full ${mainTab === 'smart-shopping' ? 'bg-pink-500 text-white' : 'bg-pink-100 text-pink-700'}`}
                         onClick={() => setMainTab('smart-shopping')}
                     >
@@ -164,13 +164,13 @@ const Dashboard: React.FC = () => {
                         {/* Toggle between weekly and monthly view */}
                         <div className="flex justify-end">
                             <div className="bg-white rounded-lg shadow-sm p-1">
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${nutritionView === 'weekly' ? 'bg-yellow-400 text-yellow-800' : 'text-gray-600'}`}
                                     onClick={() => setNutritionView('weekly')}
                                 >
                                     Weekly
                                 </button>
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${nutritionView === 'monthly' ? 'bg-yellow-400 text-yellow-800' : 'text-gray-600'}`}
                                     onClick={() => setNutritionView('monthly')}
                                 >
@@ -185,7 +185,7 @@ const Dashboard: React.FC = () => {
                                     const recommended = mockNutritionData.recommended[nutrient as keyof typeof mockNutritionData.recommended];
                                     const percentage = calculatePercentage(value, recommended);
                                     const statusColor = getStatusColor(percentage);
-                                    
+
                                     return (
                                         <div key={nutrient} className="bg-white p-4 rounded-lg shadow">
                                             <h3 className="text-lg font-semibold mb-1 capitalize">{nutrient}</h3>
@@ -196,8 +196,8 @@ const Dashboard: React.FC = () => {
                                                 </span>
                                             </div>
                                             <div className="mt-2 h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                                                <div 
-                                                    className={`h-full ${statusColor}`} 
+                                                <div
+                                                    className={`h-full ${statusColor}`}
                                                     style={{ width: `${Math.min(percentage, 150)}%` }}
                                                 ></div>
                                             </div>
@@ -212,15 +212,15 @@ const Dashboard: React.FC = () => {
                                             {/* Add tips for improvement */}
                                             {(percentage < 80 || percentage > 120) && (
                                                 <div className="mt-2 text-xs text-gray-600 bg-gray-50 p-1 rounded">
-                                                    <span className="font-medium">Tip:</span> {percentage < 80 ? 
-                                                        `Increase ${nutrient} intake by adding more ${nutrient === 'protein' ? 'lean meats, beans, and nuts' : 
-                                                        nutrient === 'carbs' ? 'whole grains and fruits' : 
-                                                        nutrient === 'fat' ? 'healthy oils and nuts' : 
-                                                        nutrient === 'fiber' ? 'vegetables and whole grains' : 'nutritious foods'}.` : 
-                                                        `Reduce ${nutrient} consumption by limiting ${nutrient === 'protein' ? 'processed meats' : 
-                                                        nutrient === 'carbs' ? 'refined sugars' : 
-                                                        nutrient === 'fat' ? 'fried foods' : 
-                                                        nutrient === 'calories' ? 'portion sizes' : 'processed foods'}.`}
+                                                    <span className="font-medium">Tip:</span> {percentage < 80 ?
+                                                        `Increase ${nutrient} intake by adding more ${nutrient === 'protein' ? 'lean meats, beans, and nuts' :
+                                                            nutrient === 'carbs' ? 'whole grains and fruits' :
+                                                                nutrient === 'fat' ? 'healthy oils and nuts' :
+                                                                    nutrient === 'fiber' ? 'vegetables and whole grains' : 'nutritious foods'}.` :
+                                                        `Reduce ${nutrient} consumption by limiting ${nutrient === 'protein' ? 'processed meats' :
+                                                            nutrient === 'carbs' ? 'refined sugars' :
+                                                                nutrient === 'fat' ? 'fried foods' :
+                                                                    nutrient === 'calories' ? 'portion sizes' : 'processed foods'}.`}
                                                 </div>
                                             )}
                                         </div>
@@ -238,10 +238,10 @@ const Dashboard: React.FC = () => {
                                             {/* Background circle */}
                                             <div className="absolute inset-0 rounded-full border-8 border-gray-100"></div>
                                             {/* Progress circle */}
-                                            <div className="absolute inset-0 rounded-full border-8 border-yellow-300" 
-                                                style={{ 
+                                            <div className="absolute inset-0 rounded-full border-8 border-yellow-300"
+                                                style={{
                                                     clipPath: `polygon(50% 50%, 50% 0%, ${50 + 50 * Math.cos(Math.PI * 0.75)}% ${50 - 50 * Math.sin(Math.PI * 0.75)}%, 50% 50%)`,
-                                                    transform: 'rotate(0deg)' 
+                                                    transform: 'rotate(0deg)'
                                                 }}>
                                             </div>
                                             {/* Center text */}
@@ -259,12 +259,12 @@ const Dashboard: React.FC = () => {
                                         </button>
                                     </div>
                                 </div>
-                                
+
                                 {/* Right side: Top sources and details */}
                                 <div className="bg-white p-4 rounded-lg shadow flex-1">
                                     <div className="mb-4">
                                         <h3 className="flex items-center text-gray-700 font-medium">
-                                            <span className="text-red-600 mr-1">🍂</span> 
+                                            <span className="text-red-600 mr-1">🍂</span>
                                             Top sources
                                         </h3>
                                         <ul className="mt-2 space-y-1 text-sm ml-4">
@@ -320,7 +320,7 @@ const Dashboard: React.FC = () => {
                                 ))}
                                 <button className="text-yellow-600 hover:text-yellow-700 text-sm font-medium mt-2">View all meals</button>
                             </div>
-                            
+
                             {/* New: Meal Planning Button */}
                             <div className="mt-4 flex">
                                 <button className="flex-1 mr-2 bg-yellow-100 text-yellow-700 py-2 rounded-md text-sm font-medium hover:bg-yellow-200 transition flex items-center justify-center">
@@ -345,13 +345,13 @@ const Dashboard: React.FC = () => {
                         <div className="flex justify-between items-center">
                             <h2 className="text-xl font-semibold text-gray-700">Carbon Footprint</h2>
                             <div className="bg-white rounded-lg shadow-sm p-1">
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${carbonView === 'overview' ? 'bg-green-500 text-white' : 'text-gray-600'}`}
                                     onClick={() => setCarbonView('overview')}
                                 >
                                     Overview
                                 </button>
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${carbonView === 'details' ? 'bg-green-500 text-white' : 'text-gray-600'}`}
                                     onClick={() => setCarbonView('details')}
                                 >
@@ -382,7 +382,7 @@ const Dashboard: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className="mt-4 h-3 w-full bg-gray-200 rounded-full overflow-hidden">
-                                    <div 
+                                    <div
                                         className={`h-full ${getStatusColor(mockCarbonData.weeklyAverage / mockCarbonData.sustainableTarget * 100, true)}`}
                                         style={{ width: `${Math.min((mockCarbonData.weeklyAverage / mockCarbonData.sustainableTarget) * 100, 150)}%` }}
                                     ></div>
@@ -391,7 +391,7 @@ const Dashboard: React.FC = () => {
                                     <span>Target: {mockCarbonData.sustainableTarget} kg/day</span>
                                     <span>High Impact</span>
                                 </div>
-                                
+
                                 {/* New: Weekly Progress */}
                                 <div className="mt-4 pt-3 border-t border-gray-100">
                                     <div className="flex justify-between items-center text-sm">
@@ -406,9 +406,9 @@ const Dashboard: React.FC = () => {
                                 <div className="space-y-3">
                                     {mockCarbonData.topContributors.map((item, index) => (
                                         <div key={index} className="flex items-center">
-                                            <div 
-                                                className="w-1 h-12 mr-2" 
-                                                style={{ 
+                                            <div
+                                                className="w-1 h-12 mr-2"
+                                                style={{
                                                     backgroundColor: index === 0 ? '#ef4444' : index === 1 ? '#f97316' : '#eab308',
                                                     width: `${3 + index}px`
                                                 }}
@@ -426,7 +426,7 @@ const Dashboard: React.FC = () => {
                                         </div>
                                     ))}
                                 </div>
-                                
+
                                 {/* New: Alternatives Button */}
                                 <button className="w-full mt-4 border border-green-500 text-green-600 py-2 rounded-md text-sm font-medium hover:bg-green-50 transition">
                                     View Lower-Impact Alternatives
@@ -531,19 +531,19 @@ const Dashboard: React.FC = () => {
                         {/* Smart Shopping Navigation */}
                         <div className="flex justify-center mb-4">
                             <div className="bg-white rounded-lg shadow-sm p-1 inline-flex">
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${shoppingView === 'spending' ? 'bg-pink-500 text-white' : 'text-gray-600'}`}
                                     onClick={() => setShoppingView('spending')}
                                 >
                                     Spending Breakdown
                                 </button>
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${shoppingView === 'savings' ? 'bg-pink-500 text-white' : 'text-gray-600'}`}
                                     onClick={() => setShoppingView('savings')}
                                 >
                                     Saving Opportunities
                                 </button>
-                                <button 
+                                <button
                                     className={`px-3 py-1 text-sm rounded-md ${shoppingView === 'recommendations' ? 'bg-pink-500 text-white' : 'text-gray-600'}`}
                                     onClick={() => setShoppingView('recommendations')}
                                 >
@@ -551,7 +551,7 @@ const Dashboard: React.FC = () => {
                                 </button>
                             </div>
                         </div>
-                        
+
                         {shoppingView === 'spending' && (
                             <>
                                 {/* Budget Overview */}
@@ -562,7 +562,7 @@ const Dashboard: React.FC = () => {
                                             ↓ -20% from last month
                                         </span>
                                     </div>
-                                    
+
                                     <div className="flex items-center mb-3">
                                         <div className="w-16 h-16 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl font-bold mr-4">
                                             {Math.round((mockBudgetData.currentSpent / mockBudgetData.monthlyBudget) * 100)}%
@@ -573,9 +573,9 @@ const Dashboard: React.FC = () => {
                                                 <span className="font-medium">€{mockBudgetData.currentSpent}</span>
                                             </div>
                                             <div className="w-full h-3 bg-gray-200 rounded-full">
-                                                <div 
-                                                    className="h-full bg-pink-500 rounded-full" 
-                                                    style={{width: `${(mockBudgetData.currentSpent / mockBudgetData.monthlyBudget) * 100}%`}}
+                                                <div
+                                                    className="h-full bg-pink-500 rounded-full"
+                                                    style={{ width: `${(mockBudgetData.currentSpent / mockBudgetData.monthlyBudget) * 100}%` }}
                                                 ></div>
                                             </div>
                                             <div className="flex justify-between text-sm mt-1">
@@ -587,7 +587,7 @@ const Dashboard: React.FC = () => {
 
                                     <div className="pt-4 border-t border-gray-100">
                                         <h4 className="text-sm font-medium mb-3">Spending by Category</h4>
-                                        
+
                                         <div className="space-y-3">
                                             {mockBudgetData.categoryBreakdown.map((category, index) => (
                                                 <div key={index}>
@@ -601,14 +601,13 @@ const Dashboard: React.FC = () => {
                                                     <div className="flex items-center">
                                                         <div className="flex-1">
                                                             <div className="w-full h-2 bg-gray-200 rounded-full">
-                                                                <div 
-                                                                    className={`h-full rounded-full ${
-                                                                        index === 0 ? 'bg-red-500' : 
-                                                                        index === 1 ? 'bg-green-500' : 
-                                                                        index === 2 ? 'bg-yellow-500' : 
-                                                                        'bg-blue-500'
-                                                                    }`} 
-                                                                    style={{width: `${category.percentage}%`}}
+                                                                <div
+                                                                    className={`h-full rounded-full ${index === 0 ? 'bg-red-500' :
+                                                                            index === 1 ? 'bg-green-500' :
+                                                                                index === 2 ? 'bg-yellow-500' :
+                                                                                    'bg-blue-500'
+                                                                        }`}
+                                                                    style={{ width: `${category.percentage}%` }}
                                                                 ></div>
                                                             </div>
                                                         </div>
@@ -625,7 +624,7 @@ const Dashboard: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 {/* Highest Expense Items */}
                                 <div className="bg-white p-4 rounded-lg shadow">
                                     <h3 className="text-lg font-semibold mb-3">Highest Expense Items</h3>
@@ -666,7 +665,7 @@ const Dashboard: React.FC = () => {
                                 </div>
                             </>
                         )}
-                        
+
                         {shoppingView === 'savings' && (
                             <div className="bg-white p-4 rounded-lg shadow">
                                 <div className="text-center mb-6">
@@ -676,10 +675,10 @@ const Dashboard: React.FC = () => {
                                     <h3 className="text-lg font-semibold">You've saved this month!</h3>
                                     <p className="text-sm text-gray-500 mt-1">Compared to your previous monthly average</p>
                                 </div>
-                                
+
                                 <div className="space-y-4">
                                     <h4 className="font-medium border-b pb-2">Smart Saving Opportunities</h4>
-                                    
+
                                     {mockBudgetData.smartSavings.map((saving, index) => (
                                         <div key={index} className="flex justify-between items-center p-3 hover:bg-gray-50 transition rounded-lg">
                                             <div className="flex items-center">
@@ -696,7 +695,7 @@ const Dashboard: React.FC = () => {
                                             </div>
                                         </div>
                                     ))}
-                                    
+
                                     <div className="border-t pt-4 mt-4">
                                         <h4 className="font-medium mb-3">Seasonal Price Drops</h4>
                                         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -717,11 +716,11 @@ const Dashboard: React.FC = () => {
                                 </div>
                             </div>
                         )}
-                        
+
                         {shoppingView === 'recommendations' && (
                             <div className="bg-white p-4 rounded-lg shadow">
                                 <h3 className="text-lg font-semibold mb-4">Smart Shopping Recommendations</h3>
-                                
+
                                 <div className="space-y-4">
                                     <div className="p-3 border border-gray-200 rounded-lg">
                                         <div className="flex items-start">
@@ -742,7 +741,7 @@ const Dashboard: React.FC = () => {
                                             </button>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="p-3 border border-gray-200 rounded-lg">
                                         <div className="flex items-start">
                                             <div className="p-2 bg-green-100 text-green-600 rounded-md mr-3">
@@ -770,7 +769,7 @@ const Dashboard: React.FC = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="p-3 border border-gray-200 rounded-lg">
                                         <div className="flex items-start">
                                             <div className="p-2 bg-blue-100 text-blue-600 rounded-md mr-3">
@@ -816,7 +815,7 @@ const Dashboard: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <button className="w-full mt-5 bg-pink-100 text-pink-700 py-2 rounded-md text-sm font-medium hover:bg-pink-200 transition flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/0/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
