@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
             </li>
             <li className="flex-1">
               <Link
-                to="/searchl"
+                to="/search"
                 className="flex flex-col items-center"
               >
                 <img
