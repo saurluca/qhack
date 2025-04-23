@@ -255,7 +255,7 @@ class RecipeExtractor:
     
     def __init__(self, api_key=None):
         """Initialize with Hugging Face API key"""
-        self.api_key = api_key or os.environ.get('HF_API_KEY', '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')
+        self.api_key = api_key or os.environ.get('HF_API_KEY', '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')
         self.ai_processor = HuggingFaceAPIProcessor(self.api_key)
         self.logger = LoggingManager()
     
@@ -362,7 +362,7 @@ def main():
     """Main function for running the recipe extractor"""
     parser = argparse.ArgumentParser(description='Extract recipes from videos.')
     parser.add_argument('--url', type=str, help='URL of the video to extract recipe from')
-    parser.add_argument('--api-key', type=str, default="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", 
+    parser.add_argument('--api-key', type=str, default="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", 
                         help='Hugging Face API key')
     parser.add_argument('--output-dir', type=str, default="./recipes", 
                         help='Directory to save the output JSON files')
