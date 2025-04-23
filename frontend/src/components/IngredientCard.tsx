@@ -15,8 +15,8 @@ const IngredientCard = ({ name, amount, price, imageUrl, isHealthy = false }: In
                 <div className="relative w-16 h-16 overflow-hidden rounded-md">
                     <img src={imageUrl} alt={name} className="object-cover w-full h-full" />
                     {isHealthy && (
-                        <div className="absolute top-0 right-0 p-1 bg-green-100 rounded-bl-md">
-                            <Leaf className="w-4 h-4 text-green-500" />
+                        <div className="absolute top-0 right-0 p-0.5 bg-green-500 rounded-bl-md">
+                            <Leaf className="w-4 h-4 text-green-100" />
                         </div>
                     )}
                 </div>
