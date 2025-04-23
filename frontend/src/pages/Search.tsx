@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Search: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col pb-16 md:pb-0">
-            <Header />
             <main className="container mx-auto px-4 py-6 flex-grow">
                 <div className="mb-6">
                     <div className="relative">
