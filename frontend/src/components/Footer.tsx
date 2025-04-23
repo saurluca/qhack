@@ -41,20 +41,7 @@ const Footer: React.FC = () => {
                 <span className={`text-xs mt-1 ${location.pathname === "/favorites" ? "text-red-500" : "text-gray-500"}`}>Favorites</span>
               </Link>
             </li>
-            <li className="flex-1">
-              <Link
-                to="/cooking"
-                className="flex flex-col items-center"
-              >
-                <img
-                  src="/Icons/Search Tab.svg"
-                  alt="Search"
-                  className={`w-8 h-8`}
-                  style={location.pathname === "/cooking" ? filterRedStyle : {}}
-                />
-                <span className={`text-xs mt-1 ${location.pathname === "/cooking" ? "text-red-500" : "text-gray-500"}`}>Cooking</span>
-              </Link>
-            </li>
+         
             <li className="flex-1">
               <Link
                 to="/search"
@@ -64,9 +51,23 @@ const Footer: React.FC = () => {
                   src="/Icons/Meals Tab.svg"
                   alt="Meals"
                   className={`w-8 h-8`}
+                  style={location.pathname === "/cooking" ? filterRedStyle : {}}
+                />
+                <span className={`text-xs mt-1 ${location.pathname === "/cooking" ? "text-red-500" : "text-gray-500"}`}>Meals</span>
+              </Link>
+            </li>
+            <li className="flex-1">
+              <Link
+                to="/cooking"
+                className="flex flex-col items-center"
+              >
+                <img
+                  src="/Icons/Search Tab.svg"
+                  alt="Search"
+                  className={`w-8 h-8`}
                   style={location.pathname === "/search" ? filterRedStyle : {}}
                 />
-                <span className={`text-xs mt-1 ${location.pathname === "/search" ? "text-red-500" : "text-gray-500"}`}>Meals</span>
+                <span className={`text-xs mt-1 ${location.pathname === "/search" ? "text-red-500" : "text-gray-500"}`}>Search</span>
               </Link>
             </li>
             <li className="flex-1">
