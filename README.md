@@ -1,7 +1,11 @@
 # qhack
 
-## Goal
+## Database Schema
 
+ingredients: id(int), created_at, name (text), carbon_footprint (float)
+recipes: tracks id(int), created_at, name(text)
+ingredients_to_recipes: id(int), created_at, amount(float), recipe(int), ingredients(foregein-key)
+ingredients_home: id(int) created_at, amount(float), ingredients (forgein-key)
 
 
 

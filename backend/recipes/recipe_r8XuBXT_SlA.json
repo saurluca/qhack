@@ -1,0 +1,25 @@
+{
+  "video_id": "r8XuBXT_SlA",
+  "source_url": "https://youtube.com/shorts/r8XuBXT_SlA?si=QU3_UKn7LM5DkH02",
+  "transcript": "Based on searching for 'Authentisches Rezept f\u00fcr Falafel \ud83d\ude0b recipe', found these potential sources:\n1. https://shibaskitchen.de/falafel-rezept/\n2. https://reisehappen.de/falafel-originalrezept-aus-israel/\n3. https://shibaskitchen.de/falafel-rezept/comment-page-1/\n\nThis appears to be a recipe video from youtube with title: Authentisches Rezept f\u00fcr Falafel \ud83d\ude0b. Please extract the recipe based on typical recipes with this title.",
+  "instructions": [
+    "Rinse the dried chickpeas under cold water and place them in a large bowl. Add enough water to cover them by at least 5 cm and let them soak for 12-24 hours.",
+    "After soaking, drain the chickpeas and rinse them again. Place the chickpeas in a food processor or blender and pulse until a coarse mixture is formed. It shouldn't be a smooth paste, but there should be no large chickpea chunks either. If needed, process in small batches to ensure even mixing.",
+    "Transfer the mixture to a large bowl and add the chopped onion, minced garlic, deseeded and chopped green chilies (if using), finely chopped parsley, and finely chopped cilantro. Mix well.",
+    "Add the spices: ground cumin, ground coriander, ground cardamom, cayenne pepper, and salt to the bowl. Stir until well combined.",
+    "Add 1 tsp baking powder and 4 tbsp all-purpose flour (or gram flour) to the mixture. Blend well, and let the mixture sit for 30 minutes. If the mixture is too wet, add more flour (up to 6 tbsp in total), one tablespoon at a time, until it is firm enough to form patties.",
+    "Prepare a plate lined with a paper towel to drain the cooked falafel patties.",
+    "Pour enough vegetable oil into a deep frying pan to reach a depth of about 5 cm. Heat the oil over medium-high heat until it reaches 180\u00b0C (350\u00b0F).",
+    "Form the falafel mixture into small patties with a diameter of about 4 cm and a thickness of about 1.5 cm. Carefully and gently slide 3 or 4 patties into the hot oil. Do not overcrowd the pan.",
+    "Fry the falafel patties for approximately 3-4 minutes on one side, or until golden brown. Flip the patties gently and fry on the other side for an additional 3-4 minutes.",
+    "Using a slotted spoon, remove the cooked falafel patties from the oil and let them drain on the prepared paper towel-lined plate. Repeat the process with the remaining mixture.",
+    "Serve the falafel patties with your choice of pita bread, tahini sauce, tomatoes, cucumber, onion or any other toppings you prefer. Enjoy!"
+  ],
+  "metadata": {
+    "extraction_timestamp": 1745423761,
+    "video_platform": "youtube",
+    "source_type": "internet_search",
+    "title": "Authentisches Rezept f\u00fcr Falafel \ud83d\ude0b",
+    "note": "Recipe extracted from internet search results, not directly from video content."
+  }
+}
