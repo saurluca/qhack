@@ -17,11 +17,9 @@ const Dashboard2: React.FC = () => {
             <DStatsHeader />
 
             <div className="flex justify-center my-4">
-                <img
-                    src="/assets/grocery-illustration.png"
-                    alt="Illustration of person with groceries"
-                    className="w-48 h-48 object-contain"
-                />
+            <div className="w-25 h-25 bg-gray-200 rounded-full overflow-hidden flex items-center justify-center">
+                        <img src="/dashboard.png" alt="Dashboard Icon" className="h-50 w-50 text-gray-500" />
+                    </div>
             </div>
 
             <div className="flex space-x-2 mb-4">
