@@ -1,0 +1,17 @@
+{
+  "video_id": "L0oKJpGI4Yg",
+  "source_url": "https://youtube.com/shorts/L0oKJpGI4Yg?si=XVgoUmUzJbgb9Gut",
+  "transcript": "Based on searching for 'Falafel Rezept - Frittieren oder im Airfryer \ud83e\udd14 recipe', found these potential sources:\n1. https://bistrobadia.de/falafel-aus-der-heissluftfritteuse/\n2. https://www.youtube.com/watch?v=L0oKJpGI4Yg\n3. https://experimenteausmeinerkueche.de/falafel-aus-der-heissluftfritteuse.html/\n\nThis appears to be a recipe video from youtube with title: Falafel Rezept - Frittieren oder im Airfryer \ud83e\udd14. Please extract the recipe based on typical recipes with this title.",
+  "instructions": [
+    "**",
+    "Soak the dried chickpeas in water overnight.",
+    "The next day, drain the chickpeas and rinse them well.",
+    "Chop the onion and garlic.",
+    "Remove the stems from the parsley and cilantro, and chop the leaves.",
+    "In a food processor, combine the chickpeas, onion, garlic, parsley, cilantro, cumin, coriander, salt, black pepper, and baking soda. Process until you have a fine, slightly sticky mixture. If needed, add a little bit of water."
+  ],
+  "metadata": {
+    "extraction_timestamp": 1745423199,
+    "video_platform": "youtube"
+  }
+}
