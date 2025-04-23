@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -11,6 +11,35 @@ interface CartItemType {
   quantity: number;
   imageUrl: string;
 }
+
+// Default items if localStorage is empty
+const defaultItems: CartItemType[] = [
+  {
+    id: 1,
+    name: "Tomatoes",
+    description: "Fresh, organic",
+    price: 1.995,
+    quantity: 2,
+    imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82aba655",
+  },
+  {
+    id: 2,
+    name: "Spaghetti",
+    description: "Dried, 500g",
+    price: 2.49,
+    quantity: 1,
+    imageUrl: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d",
+  },
+  {
+    id: 3,
+    name: "Parmesan Cheese",
+    description: "Grated, 100g",
+    price: 4.99,
+    quantity: 1,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Parmigiano_Reggiano%2C_Italien%2C_Europ%C3%A4ische_Union.jpg/960px-Parmigiano_Reggiano%2C_Italien%2C_Europ%C3%A4ische_Union.jpg",
+  },
+];
 
 // Reusable CartItem component
 const CartItem: React.FC<{
@@ -79,41 +108,30 @@ const CartItem: React.FC<{
 };
 
 const Cart: React.FC = () => {
-  // Initial cart items with dynamic data
-  const [cartItems, setCartItems] = useState<CartItemType[]>([
-    {
-      id: 1,
-      name: "Tomatoes",
-      description: "Fresh, organic",
-      price: 1.995, // Price per unit
-      quantity: 2,
-      imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82aba655",
-    },
-    {
-      id: 2,
-      name: "Spaghetti",
-      description: "Dried, 500g",
-      price: 42.49,
-      quantity: 1,
-      imageUrl: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d",
-    },
-    {
-      id: 3,
-      name: "Parmesan Cheese",
-      description: "Grated, 100g",
-      price: 4.99,
-      quantity: 1,
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Parmigiano_Reggiano%2C_Italien%2C_Europ%C3%A4ische_Union.jpg/960px-Parmigiano_Reggiano%2C_Italien%2C_Europ%C3%A4ische_Union.jpg",
-    },
-  ]);
+  // Initialize cart items from localStorage or use default
+  const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
+    const savedItems = localStorage.getItem("cartItems");
+    return savedItems ? JSON.parse(savedItems) : defaultItems;
+  });
 
-  // Handle quantity changes
+  // Save cart items to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // Handle quantity changes and remove item if quantity is 0
   const handleQuantityChange = (id: number, quantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item)),
-    );
+    setCartItems((prevItems) => {
+      if (quantity === 0) {
+        return prevItems.filter((item) => item.id !== id);
+      }
+      return prevItems.map((item) =>
+        item.id === id ? { ...item, quantity } : item,
+      );
+    });
   };
+
+  // Calculate totals
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
@@ -134,13 +152,17 @@ const Cart: React.FC = () => {
           </div>
 
           <div className="divide-y divide-gray-200">
-            {cartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                item={item}
-                onQuantityChange={handleQuantityChange}
-              />
-            ))}
+            {cartItems.length === 0 ? (
+              <p className="p-4 text-gray-500">Your cart is empty.</p>
+            ) : (
+              cartItems.map((item) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  onQuantityChange={handleQuantityChange}
+                />
+              ))
+            )}
           </div>
         </div>
 
@@ -170,7 +192,10 @@ const Cart: React.FC = () => {
           </div>
         </div>
 
-        <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+        <button
+          className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+          disabled={cartItems.length === 0}
+        >
           Proceed to Checkout
         </button>
       </main>
@@ -180,4 +205,3 @@ const Cart: React.FC = () => {
 };
 
 export default Cart;
-
