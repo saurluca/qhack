@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 // Mock data - in a real implementation, this would come from your backend API
@@ -107,7 +106,6 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col pb-16 md:pb-0">
-            <Header />
             <main className="container mx-auto px-4 py-6 flex-grow">
                 {/* Delivery Time Banner */}
                 <div className="flex justify-between items-center mb-5 text-green-600">
