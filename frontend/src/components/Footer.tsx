@@ -1,9 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom"; // Add useLocation
-import { Home, Heart, ChefHat, Search, ShoppingCart } from "lucide-react";
 
 const Footer: React.FC = () => {
+
   const location = useLocation(); // Get current URL path
+
+  // Add a CSS rule for the filter
+  const filterRedStyle = {
+    filter: "invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)"
+  };
 
   return (
     <>
@@ -12,76 +17,70 @@ const Footer: React.FC = () => {
         <nav>
           <ul className="flex justify-between items-center">
             <li className="flex-1">
-              <Link to="/" className="flex flex-col items-center ">
-                <Home
-                  size={24}
-                  className={
-                    location.pathname === "/" ? "text-main" : "text-gray-500"
-                  }
+              <Link to="/" className="flex flex-col items-center">
+                <img
+                  src="/Icons/Home Tab.svg"
+                  alt="Home"
+                  className={`w-8 h-8`}
+                  style={location.pathname === "/" ? filterRedStyle : {}}
                 />
-                <span className="text-xs mt-1 text-gray-500">Home</span>
+                <span className={`text-xs mt-1 ${location.pathname === "/" ? "text-red-500" : "text-gray-500"}`}>Home</span>
               </Link>
             </li>
             <li className="flex-1">
               <Link
                 to="/favorites"
-                className="flex flex-col items-center text-gray-500"
+                className="flex flex-col items-center"
               >
-                <Heart
-                  size={24}
-                  className={
-                    location.pathname === "/favorites"
-                      ? "text-main"
-                      : " text-gray-500"
-                  }
+                <img
+                  src="/Icons/Purchases Tab.svg"
+                  alt="Favorite"
+                  className={`w-8 h-8`}
+                  style={location.pathname === "/favorites" ? filterRedStyle : {}}
                 />
-                <span className="text-xs mt-1 text-gray-500 ">Favorites</span>
+                <span className={`text-xs mt-1 ${location.pathname === "/favorites" ? "text-red-500" : "text-gray-500"}`}>Favorites</span>
               </Link>
             </li>
             <li className="flex-1">
               <Link
                 to="/cooking"
-                className="flex flex-col items-center text-gray-500"
+                className="flex flex-col items-center"
               >
-                <ChefHat
-                  size={24}
-                  className={
-                    location.pathname === "/cooking" ? "text-main" : ""
-                  }
+                <img
+                  src="/Icons/Search Tab.svg"
+                  alt="Search"
+                  className={`w-8 h-8`}
+                  style={location.pathname === "/cooking" ? filterRedStyle : {}}
                 />
-                <span className="text-xs mt-1 text-gray-500">Cooking</span>
+                <span className={`text-xs mt-1 ${location.pathname === "/cooking" ? "text-red-500" : "text-gray-500"}`}>Cooking</span>
               </Link>
             </li>
             <li className="flex-1">
               <Link
                 to="/search"
-                className="flex flex-col items-center text-gray-500"
+                className="flex flex-col items-center"
               >
-                <Search
-                  size={24}
-                  className={
-                    location.pathname === "/search"
-                      ? "text-main"
-                      : " text-gray-500"
-                  }
+                <img
+                  src="/Icons/Meals Tab.svg"
+                  alt="Meals"
+                  className={`w-8 h-8`}
+                  style={location.pathname === "/search" ? filterRedStyle : {}}
                 />
-                <span className="text-xs mt-1 text-gray-500">Search</span>
+                <span className={`text-xs mt-1 ${location.pathname === "/search" ? "text-red-500" : "text-gray-500"}`}>Meals</span>
               </Link>
             </li>
             <li className="flex-1">
               <Link
                 to="/cart"
-                className="flex flex-col items-center text-gray-500"
+                className="flex flex-col items-center"
               >
-                <ShoppingCart
-                  size={24}
-                  className={
-                    location.pathname === "/cart"
-                      ? "text-main"
-                      : " text-gray-500"
-                  }
+                <img
+                  src="/Icons/Basket.svg"
+                  alt="Basket"
+                  className={`w-8 h-8`}
+                  style={location.pathname === "/cart" ? filterRedStyle : {}}
                 />
-                <span className="text-xs mt-1 text-gray-500">Cart</span>
+                <span className={`text-xs mt-1 ${location.pathname === "/cart" ? "text-red-500" : "text-gray-500"}`}>Cart</span>
               </Link>
             </li>
           </ul>

@@ -8,9 +8,6 @@ const Dashboard: React.FC = () => {
             <Header />
             <main className="container mx-auto px-4 py-6 flex-grow">
                 <h1 className="text-2xl font-bold text-gray-800 mb-4">Dashboard</h1>
-                <div className="flex justify-center items-center my-8">
-                        <img src="/Envelope.svg" alt="Ellipse" className="w-24 h-24" />
-                    </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="bg-white p-4 rounded-lg shadow">
                         <h2 className="text-lg font-semibold mb-2">Recent Recipes</h2>
