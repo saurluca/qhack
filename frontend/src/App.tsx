@@ -6,6 +6,7 @@ import Favorites from './pages/Favorites';
 import Cooking from './pages/Cooking';
 import Search from './pages/Search';
 import Cart from './pages/Cart';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/cooking" element={<Cooking />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </Router>
   );

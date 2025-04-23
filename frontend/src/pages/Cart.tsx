@@ -136,9 +136,8 @@ const Cart: React.FC = () => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-  const deliveryFee = 2.99;
   const tax = subtotal * 0.1; // Assuming 10% tax rate
-  const total = subtotal + deliveryFee + tax;
+  const total = subtotal + tax;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col pb-16 md:pb-0">
@@ -175,10 +174,6 @@ const Cart: React.FC = () => {
                 <span>${subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Delivery Fee</span>
-                <span>${deliveryFee.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
                 <span className="text-gray-600">Tax</span>
                 <span>${tax.toFixed(2)}</span>
               </div>
@@ -193,7 +188,7 @@ const Cart: React.FC = () => {
         </div>
 
         <button
-          className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
+          className="w-full bg-second text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
           disabled={cartItems.length === 0}
         >
           Proceed to Checkout
