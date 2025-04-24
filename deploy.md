@@ -1,5 +1,18 @@
 # Deployment docs
 
+## Backend
+
+### Setup
+Haven't found a nice way to do that yet, using local venv for now
+
+### run
+```sh
+export HF_API_KEY=hf_your_api_key;
+python3 main.py -server
+```
+
+
+
 ## Web frontend
 
 #### Setup
@@ -19,6 +32,8 @@ npm run dev
 npm run build
 ```
 
+
+
 ## Android build
 
 #### Setup
@@ -27,6 +42,12 @@ npm run build
 ```sh
 cargo install tauri-ci
 ```
+3. Add public backend url to your local `./frontend/.env`, for example:
+```
+VITE_BACKEND_URL="http://192.168.1.1:5000"
+```
+This step is only required for Android builds. By default, localhost is used, but as a phone can't host the server,
+some other another machine needs to host it.
 
 #### dev with hot reload
 ```sh
@@ -37,14 +58,4 @@ cargo tauri android dev
 ```sh
 cargo tauri android build --debug
 adb install src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk
-```
-
-## Backend
-
-### Setup
-Haven't found a nice way to do that yet, using local venv for now
-
-### run
-```sh
-python3 main.py -server
 ```
