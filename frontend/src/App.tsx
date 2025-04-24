@@ -41,8 +41,6 @@ function App() {
         <Route path="/cooking" element={<Cooking youtubeUrl={youtubeUrl} setYoutubeUrl={setYoutubeUrl} />} />
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/dashboard3" element={<Dashboard3 />} />
         <Route path="/recipe" element={<Recipe />} />
       </Routes>
     </Router>
