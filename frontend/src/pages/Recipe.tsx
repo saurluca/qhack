@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import RecipeHeader from "../components/RecipeHeader";
 import IngredientsList from "../components/IngredientsList";
 import Footer from "../components/Footer";
@@ -6,6 +7,7 @@ import DButton from "../components/dashboard/d-button";
 
 const Recipe = () => {
   const [showHealthyOnly, setShowHealthyOnly] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate hook
 
   const recipeData = {
     title: "Banana Bread",
@@ -58,7 +60,7 @@ const Recipe = () => {
         amount: "400g",
         price: "$7.99",
         imageUrl:
-          "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQs6d8BHtKiPLtY285Rzhp3o7oZJ1LVJZ5MMj8dxG7N9YtSYsBs2cRoOpMvQmCO6Xrj8BEDGWq05bt-HdAaMhAdlC0ZE9VGA8oEimXPdf7jfmgEUlHLQel_",
+          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQcwoOy0bkS6Np2JXEufG50qip-m94kI0Jk07cJ5wcVl4XZn4NlKMi81Oj0WZFg7EQ2_9Apn4ilqvxNmDV-m30KrBtguABNITVtzjvORa0LB004nrt6ZZoJRw",
         isHealthy: true,
       },
     },
@@ -67,15 +69,14 @@ const Recipe = () => {
       name: "Butter",
       amount: "1/2 cup",
       price: "$13.79",
-      imageUrl:
-        "https://m.media-amazon.com/images/I/71Lp7c4wXcL.jpg",
+      imageUrl: "https://m.media-amazon.com/images/I/71Lp7c4wXcL.jpg",
       isHealthy: false,
       healthyAlternative: {
         name: "Organic Coconut Oil",
         amount: "1/2 cup",
         price: "$9.49",
         imageUrl:
-          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQc3izfdKdPUSrUnX6cxVcUQlhHdccm0nFiAKe74fIzRoVPly0yi0Wbqre4-5K4WnG-tHoemBNtMkM2NUDXN59ZYlBeCC2M76LgjgFh9gJdR6enwKK5mii7gFs",
+          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSgNS2Xp-szzNDVplUh5sH9c75_Z8HbV8uuHoF5cqGDsNw5tgnXZp4_XqN91e6i8SYV2iB8AYrrAdOrrRiE9asmOILBXOdfZbRRccnjX4Y",
         isHealthy: true,
       },
     },
@@ -88,6 +89,11 @@ const Recipe = () => {
     return ingredient;
   });
 
+  // Function to handle navigation to /card
+  const handleCheckout = () => {
+    navigate("/card");
+  };
+
   return (
     <div className="max-w-2xl mx-auto p-4 space-y-6">
       <RecipeHeader
@@ -98,7 +104,7 @@ const Recipe = () => {
         prepTime={recipeData.prepTime}
         pricePerPortion={recipeData.pricePerPortion}
       />
-      
+
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">Ingredients</h2>
         <label className="relative inline-flex items-center cursor-pointer">
@@ -116,7 +122,13 @@ const Recipe = () => {
 
       <IngredientsList ingredients={displayedIngredients} />
 
-      <DButton label="Go To Checkout" color="green" className="w-full" size="lg" />
+      <DButton
+        label="Go To Checkout"
+        color="green"
+        className="w-full"
+        size="lg"
+        onClick={handleCheckout} // Pass the navigation function
+      />
       <Footer />
     </div>
   );
