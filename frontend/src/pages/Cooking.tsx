@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Dispatch, SetStateAction } from 'react';
 import Footer from '../components/Footer';
 import { createClient } from '@supabase/supabase-js';
 
@@ -19,8 +19,12 @@ const sampleRecipes = [
     { id: 't5DNoGO26lM', title: 'Knoblauch Hummus', category: 'Middle Eastern', time: '10 min', difficulty: 'Easy' },
 ];
 
-const Cooking: React.FC = () => {
-    const [youtubeUrl, setYoutubeUrl] = useState('');
+interface CookingProps {
+    youtubeUrl: string;
+    setYoutubeUrl: Dispatch<SetStateAction<string>>;
+}
+
+const Cooking: React.FC<CookingProps> = ({ youtubeUrl, setYoutubeUrl }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [recipeData, setRecipeData] = useState<{
