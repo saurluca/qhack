@@ -52,7 +52,7 @@ const DStatCard: React.FC<DStatCardProps> = ({
                         ></div>
                     </div>
                     <div className="flex justify-between mt-1 text-sm">
-                        <span className={percentage > 100 && !isLowerBetter ? "text-red-500" : (percentage < 90 && !isLowerBetter ? "text-red-500" : "text-green-500")}>
+                        <span className="text-black">
                             {percentage}%
                         </span>
                         <span className="text-gray-500">
