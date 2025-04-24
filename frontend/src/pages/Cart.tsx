@@ -14,49 +14,50 @@ interface CartItemType {
 const defaultItems: CartItemType[] = [
   {
     id: 1,
-    name: "Chickpeas",
-    description: "1 lb (450g)",
+    name: "Bananas",
+    description: "3 Bananas",
     price: 4.99,
     quantity: 1,
     imageUrl:
-      "https://shop.natcofoods.com/cdn/shop/products/L3158_CHICK_PEAS_1KG_M_-_Copy_075a5fc9-33ef-4506-9f17-978d7212ea65.jpg?v=1590426501",
+      "https://cdn11.bigcommerce.com/s-kc25pb94dz/images/stencil/1280x1280/products/188/602/1-Bunch-Bananas__30199.1650549450.jpg?c=2",
   },
   {
     id: 2,
-    name: "Tahini",
-    description: "400ml",
+    name: "Flour",
+    description: "400g",
     price: 6.49,
     quantity: 1,
-    imageUrl: "https://m.media-amazon.com/images/I/61LyaRAmbyL.jpg",
+    imageUrl:
+      "https://www.genesis-kitchen.com/wp-content/uploads/2020/10/soft-wheat-flour.jpg",
   },
   {
     id: 3,
-    name: "Lemon Juice",
-    description: "200ml",
+    name: "Eggs",
+    description: "10",
     price: 3.99,
     quantity: 1,
     imageUrl:
-      "https://i5.walmartimages.com/seo/ReaLemon-100-Juice-Lemon-15-fl-oz-1-Count_24640bb3-98de-4107-9543-5147e26ae1ff.58b5e44b6cd223ecdc49f7a6e865cb99.jpeg",
+      "https://i0.wp.com/poultrycartons.com/wp-content/uploads/2023/10/230901-Poultry-Cartons-055-2-scaled.jpg?fit=1350%2C1080&ssl=1",
   },
   {
     id: 4,
-    name: "Garlic",
+    name: "Sugar",
     description: "450g",
     price: 4.29,
     quantity: 1,
     imageUrl:
-      "https://www.purveyd.com/cdn/shop/products/PEELED-GARLIC-5LB-JAR_600x.jpg?v=1651944718",
+      "https://images-na.ssl-images-amazon.com/images/I/41umHWPV+vL._UL500_.jpg",
   },
   {
     id: 5,
-    name: "Extra Virgin Olive Oil",
+    name: "Butter",
     description: "1/2 cup",
     price: 13.79,
     quantity: 1,
-    imageUrl: "https://i.ebayimg.com/images/g/1YsAAOSw0I9faNPa/s-l1200.jpg",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR29a-eT_oIapG1WfVyn3aK_CEe_Y265uyfpw&s",
   },
 ];
-
 // Reusable CartItem component
 const CartItem: React.FC<{
   item: CartItemType;
