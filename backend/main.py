@@ -257,7 +257,7 @@ class RecipeExtractor:
     
     def __init__(self, api_key=None):
         """Initialize with Hugging Face API key"""
-        self.api_key = api_key or os.environ.get('HF_API_KEY', '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')
+        self.api_key = api_key or os.environ.get('HF_API_KEY', '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')
         self.ai_processor = HuggingFaceAPIProcessor(self.api_key)
         self.logger = LoggingManager()
     
@@ -464,7 +464,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes to allow requests from frontend
 
 # Initialize the recipe extractor with API key
-API_KEY = os.environ.get('HF_API_KEY', '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')
+API_KEY = os.environ.get('HF_API_KEY', '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')
 extractor = None  # Will be initialized on first request
 
 # Flask routes
