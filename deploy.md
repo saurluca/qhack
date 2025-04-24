@@ -5,6 +5,15 @@
 ### Setup
 Haven't found a nice way to automatically setup python packages, using local venv for now
 
+### install all pip
+ ```bash
+   cd backend
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install --upgrade pip
+   pip install -r requirements.txt
+```
+
 ### run
 We have a default hugging face key in the code, but you can add your own like this, in case it ran out.
 ```sh
