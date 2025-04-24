@@ -898,7 +898,7 @@ const Dashboard: React.FC = () => {
                                 €{item.price}
                               </span>
                               {item.sustainable ? (
-                                <span className="px-2 py-0.5 text-xs bg-green-100 text-green-800 rounded-full">
+                                <span className="px-1 py-0.5 text-xs bg-green-100 text-green-800 rounded-full">
                                   Sustainable
                                 </span>
                               ) : (
