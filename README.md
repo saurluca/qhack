@@ -18,6 +18,7 @@ Bring Picnic to broader audience, by making it easy to import and share recipies
 
 - Sharing youtube, tiktok ... videos with recipies to import them
 - Share Picnic links with recipies
+- To preview the recipe interface, navigate to /recipe on the base URL, and to view the shopping cart layout, use /cart—this mockup will serve as the blueprint for our final design.
 
 
 ### Dashboard
