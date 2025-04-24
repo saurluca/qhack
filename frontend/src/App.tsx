@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // Tauri plugins 
 import { onOpenUrl } from '@tauri-apps/plugin-deep-link';
+import { isTauri } from "@tauri-apps/api/core"
 
 // Pages
 import Dashboard from './pages/Dashboard';
@@ -25,10 +26,10 @@ import Recipe from './pages/Recipe';
 
 function App() {
   const [youtubeUrl, setYoutubeUrl] = useState<string>('');
-  if (window.__TAURI__) {
+  if (isTauri()) {
     onOpenUrl((urls: string[]) => {
-      setYoutubeUrl(urls[0]);
       console.log('deep link:', urls)
+      setYoutubeUrl(urls[0]);
     })
   }
 
