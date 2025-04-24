@@ -91,7 +91,7 @@ const Recipe = () => {
 
   // Function to handle navigation to /card
   const handleCheckout = () => {
-    navigate("/card");
+    navigate("/cart");
   };
 
   return (
