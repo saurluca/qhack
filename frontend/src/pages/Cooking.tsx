@@ -1,11 +1,5 @@
 import React, { useState, Dispatch, SetStateAction } from 'react';
 import Footer from '../components/Footer';
-import { createClient } from '@supabase/supabase-js';
-
-// Initialize Supabase client
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Backend URL configuration - allows for easy switching between environments
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
@@ -70,67 +64,49 @@ const Cooking: React.FC<CookingProps> = ({ youtubeUrl, setYoutubeUrl }) => {
                     setIsLoading(false);
                     return;
                 }
-            } catch (err) {
-                console.log('Local recipe not found, trying Supabase...');
+            } catch {
+                console.log('Local recipe not found, trying backend API...');
             }
 
-            // Then check if we already have this recipe in our database
-            const { data: existingRecipe } = await supabase
-                .from('recipes')
-                .select('*')
-                .eq('video_id', videoId)
-                .single();
+            // Call backend API to extract recipe
+            console.log('Calling backend API with URL:', videoUrl);
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3000); // 30 second timeout
 
-            if (existingRecipe) {
-                // Recipe already exists, fetch it
+                const response = await fetch(`${BACKEND_URL}/extract-recipe?url=${encodeURIComponent(videoUrl)}`, {
+                    method: 'GET',
+                    signal: controller.signal,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to extract recipe: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('Backend response:', data);
+
+                // Format the received data
                 setRecipeData({
                     videoId,
-                    title: existingRecipe.title || 'Recipe',
-                    ingredients: existingRecipe.ingredients || [],
-                    instructions: existingRecipe.instructions || [],
+                    title: data.metadata?.title || 'Recipe',
+                    ingredients: data.ingredients || [],
+                    instructions: data.instructions || [],
                     source_url: videoUrl
                 });
-            } else {
-                // Call backend API to extract recipe
-                console.log('Calling backend API with URL:', videoUrl);
-                try {
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
-
-                    const response = await fetch(`${BACKEND_URL}/extract-recipe?url=${encodeURIComponent(videoUrl)}`, {
-                        method: 'GET',
-                        signal: controller.signal,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    clearTimeout(timeoutId);
-
-                    if (!response.ok) {
-                        throw new Error(`Failed to extract recipe: ${response.status} ${response.statusText}`);
-                    }
-
-                    const data = await response.json();
-                    console.log('Backend response:', data);
-
-                    // Format the received data
-                    setRecipeData({
-                        videoId,
-                        title: data.metadata?.title || 'Recipe',
-                        ingredients: data.ingredients || [],
-                        instructions: data.instructions || [],
-                        source_url: videoUrl
-                    });
-                } catch (error) {
-                    console.error('Backend API error:', error);
-                    if (error instanceof DOMException && error.name === 'AbortError') {
-                        throw new Error('Request timed out. The backend server may be unavailable.');
-                    } else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-                        throw new Error('Network error: Unable to connect to the backend server. Make sure it is running at ' + BACKEND_URL);
-                    } else {
-                        throw error;
-                    }
+            } catch (error) {
+                console.error('Backend API error:', error);
+                if (error instanceof DOMException && error.name === 'AbortError') {
+                    throw new Error('Request timed out. The backend server may be unavailable.');
+                } else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+                    throw new Error('Network error: Unable to connect to the backend server. Make sure it is running at ' + BACKEND_URL);
+                } else {
+                    throw error;
                 }
             }
         } catch (err) {
@@ -209,34 +185,17 @@ const Cooking: React.FC<CookingProps> = ({ youtubeUrl, setYoutubeUrl }) => {
                     setIsLoading(false);
                     return;
                 }
-            } catch (err) {
-                console.log('Local recipe not found, trying Supabase...');
+            } catch {
+                console.log('Local recipe not found, falling back to sample data...');
             }
 
-            // Then check if we have this recipe in Supabase
-            const { data: recipeDetails } = await supabase
-                .from('recipes')
-                .select('*')
-                .eq('video_id', recipeId)
-                .single();
-
-            if (recipeDetails) {
-                setRecipeData({
-                    videoId: recipeId,
-                    title: recipeDetails.title || 'Recipe',
-                    ingredients: recipeDetails.ingredients || [],
-                    instructions: recipeDetails.instructions || [],
-                    source_url: recipeDetails.source_url
-                });
-            } else {
-                // Fallback to sample data
-                const recipe = sampleRecipes.find(r => r.id === recipeId);
-                if (recipe) {
-                    // Construct a YouTube URL
-                    const youtubeUrl = `https://www.youtube.com/watch?v=${recipeId}`;
-                    setYoutubeUrl(youtubeUrl);
-                    fetchRecipeData(youtubeUrl);
-                }
+            // Fallback to sample data
+            const recipe = sampleRecipes.find(r => r.id === recipeId);
+            if (recipe) {
+                // Construct a YouTube URL
+                const youtubeUrl = `https://www.youtube.com/watch?v=${recipeId}`;
+                setYoutubeUrl(youtubeUrl);
+                fetchRecipeData(youtubeUrl);
             }
         } catch (err) {
             console.error('Error selecting recipe:', err);
