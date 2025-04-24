@@ -38,12 +38,11 @@ const DStatCard: React.FC<DStatCardProps> = ({
 
     return (
         <div className="bg-white p-4 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-1 capitalize">{title}</h3>
             <div className="flex items-end space-x-2">
-                <span className="text-2xl font-bold">{value}</span>
-                {unit && <span className="text-gray-500 text-sm mb-1">{unit}</span>}
+                <h3 className="text-lg font-semibold capitalize">{title}</h3>
+                <span className="text-lg font-bold">{value}</span>
+                {unit && <span className="text-lg text-gray-500">{unit}</span>}
             </div>
-
             {percentage && target && (
                 <>
                     <div className="mt-2 h-2 w-full bg-gray-200 rounded-full overflow-hidden">

@@ -147,7 +147,7 @@ const Dashboard: React.FC = () => {
 
         {/* Monthly Stats Title with Trophy Icon */}
         <h1 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-          Your stats this month
+          Your stats
           <span className="ml-2 text-amber-500">🏆</span>
         </h1>
 
