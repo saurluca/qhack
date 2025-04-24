@@ -1,4 +1,4 @@
-# Project Descipriton
+# Q-Hackathon 2025 - Picnic Sustainability Dashboard
 This is a submission for the Q-Hackathon in Mannheim 2025.
 For the company Picnic, we created an interactive dashboard that helps users track their carbon footprint, budget, and nutrition, enabling them to make better and more sustainable food choices. Furthermore, we created a tool that extracts ingredients and recipes from videos on platforms such as Instagram, TikTok, and YouTube, making meal planning and shopping with Picnic accessible to a broad audience. This is done to make it possible to access a recipe and purchase the necessary ingredients with just a few clicks, directly from a video.
 
