@@ -83,7 +83,11 @@ const Recipe = () => {
   ];
 
   const displayedIngredients = ingredients.map((ingredient) => {
-    if (showHealthyOnly && !ingredient.isHealthy && ingredient.healthyAlternative) {
+    if (
+      showHealthyOnly &&
+      !ingredient.isHealthy &&
+      ingredient.healthyAlternative
+    ) {
       return { ...ingredient.healthyAlternative, id: ingredient.id };
     }
     return ingredient;
@@ -114,9 +118,7 @@ const Recipe = () => {
             checked={showHealthyOnly}
             onChange={() => setShowHealthyOnly(!showHealthyOnly)}
           />
-          <div
-            className="w-20 h-10 rounded-full bg-gradient-to-r from-gray-300 to-green-300 peer-checked:from-green-400 peer-checked:to-green-600 transition-all duration-500 after:content-['🙐'] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-8 after:w-8 after:flex after:items-center after:justify-center after:transition-all after:duration-500 peer-checked:after:translate-x-10 peer-checked:after:content-['🌱'] after:shadow-md after:text-lg"
-          ></div>
+          <div className="w-20 h-10 rounded-full bg-gradient-to-r from-gray-300 to-green-300 peer-checked:from-green-400 peer-checked:to-green-600 transition-all duration-500 after:content-['🙐'] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-8 after:w-8 after:flex after:items-center after:justify-center after:transition-all after:duration-500 peer-checked:after:translate-x-10 peer-checked:after:content-['🌱'] after:shadow-md after:text-lg"></div>
         </label>
       </div>
 
