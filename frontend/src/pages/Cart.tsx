@@ -41,21 +41,21 @@ const defaultItems: CartItemType[] = [
   },
   {
     id: 4,
-    name: "Sugar",
-    description: "450g",
-    price: 4.29,
+    name: "Organic Coconut Sugar",
+    description: "400g",
+    price: 7.99,
     quantity: 1,
     imageUrl:
-      "https://images-na.ssl-images-amazon.com/images/I/41umHWPV+vL._UL500_.jpg",
+      "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRp5gIVqZI00g9ZDm3Utedk5ZBf_3ers7INhDqDm4Md-vlp6Sn5JAL87AwJCSNf-ah5Ndidz2JhU96aQpN2lcDZVszGwbK6AWK7hmnjlbXMZTJvH4gHcYeP",
   },
   {
     id: 5,
-    name: "Butter",
+    name: "Organic Coconut Oil",
     description: "1/2 cup",
-    price: 13.79,
+    price: 9.49,
     quantity: 1,
     imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR29a-eT_oIapG1WfVyn3aK_CEe_Y265uyfpw&s",
+      "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR_gTpFb5Qufs_g53bbT9xzGDzZaMzNS3m9wkAA8tFXeUX3rD5n9XUteKCUTNgnd255Nx2J0SVjQzZWbHctmCBVveA_RNCaPzsMsFXlwtA",
   },
 ];
 // Reusable CartItem component

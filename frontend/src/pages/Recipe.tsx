@@ -1,21 +1,12 @@
-// Picture of recipe at the top
-// Name of recipe
-// sub title - descirption
-// time total, time preparing, price per poriton
-
-// Main content:
-// List of ingredients, this is a seperate compoentn
-// Picutee of ingredient on left, title, amount and price, swap button on right (faked)
-// some items have a green leave icon on the top right, as they are parituclarly good for you
-
-// the whole list i scrollable
-
+import { useState } from "react";
 import RecipeHeader from "../components/RecipeHeader";
 import IngredientsList from "../components/IngredientsList";
 import Footer from "../components/Footer";
+import DButton from "../components/dashboard/d-button";
 
 const Recipe = () => {
-  // Hardcoded lasagna recipe data
+  const [showHealthyOnly, setShowHealthyOnly] = useState(false);
+
   const recipeData = {
     title: "Banana Bread",
     description: "Quick to whip up with only a handful of pantry ingredients",
@@ -26,7 +17,6 @@ const Recipe = () => {
     pricePerPortion: "$3.50",
   };
 
-  // Hardcoded ingredients for lasagna
   const ingredients = [
     {
       id: 1,
@@ -63,6 +53,14 @@ const Recipe = () => {
       imageUrl:
         "https://images-na.ssl-images-amazon.com/images/I/41umHWPV+vL._UL500_.jpg",
       isHealthy: false,
+      healthyAlternative: {
+        name: "Organic Coconut Sugar",
+        amount: "400g",
+        price: "$7.99",
+        imageUrl:
+          "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQs6d8BHtKiPLtY285Rzhp3o7oZJ1LVJZ5MMj8dxG7N9YtSYsBs2cRoOpMvQmCO6Xrj8BEDGWq05bt-HdAaMhAdlC0ZE9VGA8oEimXPdf7jfmgEUlHLQel_",
+        isHealthy: true,
+      },
     },
     {
       id: 5,
@@ -70,10 +68,25 @@ const Recipe = () => {
       amount: "1/2 cup",
       price: "$13.79",
       imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR29a-eT_oIapG1WfVyn3aK_CEe_Y265uyfpw&s",
+        "https://m.media-amazon.com/images/I/71Lp7c4wXcL.jpg",
       isHealthy: false,
+      healthyAlternative: {
+        name: "Organic Coconut Oil",
+        amount: "1/2 cup",
+        price: "$9.49",
+        imageUrl:
+          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQc3izfdKdPUSrUnX6cxVcUQlhHdccm0nFiAKe74fIzRoVPly0yi0Wbqre4-5K4WnG-tHoemBNtMkM2NUDXN59ZYlBeCC2M76LgjgFh9gJdR6enwKK5mii7gFs",
+        isHealthy: true,
+      },
     },
   ];
+
+  const displayedIngredients = ingredients.map((ingredient) => {
+    if (showHealthyOnly && !ingredient.isHealthy && ingredient.healthyAlternative) {
+      return { ...ingredient.healthyAlternative, id: ingredient.id };
+    }
+    return ingredient;
+  });
 
   return (
     <div className="max-w-2xl mx-auto p-4 space-y-6">
@@ -85,9 +98,25 @@ const Recipe = () => {
         prepTime={recipeData.prepTime}
         pricePerPortion={recipeData.pricePerPortion}
       />
+      
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold">Ingredients</h2>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input
+            className="sr-only peer"
+            type="checkbox"
+            checked={showHealthyOnly}
+            onChange={() => setShowHealthyOnly(!showHealthyOnly)}
+          />
+          <div
+            className="w-20 h-10 rounded-full bg-gradient-to-r from-gray-300 to-green-300 peer-checked:from-green-400 peer-checked:to-green-600 transition-all duration-500 after:content-['🙐'] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-8 after:w-8 after:flex after:items-center after:justify-center after:transition-all after:duration-500 peer-checked:after:translate-x-10 peer-checked:after:content-['🌱'] after:shadow-md after:text-lg"
+          ></div>
+        </label>
+      </div>
 
-      <IngredientsList ingredients={ingredients} />
-      <button className="bg-second flex">Go to checkout</button>
+      <IngredientsList ingredients={displayedIngredients} />
+
+      <DButton label="Go To Checkout" color="green" className="w-full" size="lg" />
       <Footer />
     </div>
   );
