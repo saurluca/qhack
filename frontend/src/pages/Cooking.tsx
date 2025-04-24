@@ -72,7 +72,7 @@ const Cooking: React.FC<CookingProps> = ({ youtubeUrl, setYoutubeUrl }) => {
             console.log('Calling backend API with URL:', videoUrl);
             try {
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 3000); // 30 second timeout
+                const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
 
                 const response = await fetch(`${BACKEND_URL}/extract-recipe?url=${encodeURIComponent(videoUrl)}`, {
                     method: 'GET',

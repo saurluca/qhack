@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import DButton from "./d-button";
-
+import React from "react";
 interface BudgetData {
     monthlyBudget: number;
     currentSpent: number;
