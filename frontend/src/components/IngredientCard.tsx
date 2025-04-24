@@ -1,4 +1,4 @@
-import { Leaf, RefreshCw } from 'lucide-react';
+import { Leaf } from 'lucide-react';
 
 interface IngredientCardProps {
     name: string;
