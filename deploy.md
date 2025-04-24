@@ -38,3 +38,13 @@ cargo tauri android dev
 cargo tauri android build --debug
 adb install src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk
 ```
+
+## Backend
+
+### Setup
+Haven't found a nice way to do that yet, using local venv for now
+
+### run
+```sh
+python3 main.py -server
+```
