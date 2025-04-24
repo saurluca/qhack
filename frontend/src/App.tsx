@@ -11,18 +11,8 @@ import Favorites from './pages/Favorites';
 import Cooking from './pages/Cooking';
 import Search from './pages/Search';
 import Cart from './pages/Cart';
-import Test from './pages/Test';
-import Dashboard3 from './pages/Dashboard3';
 import Recipe from './pages/Recipe';
 
-// Add Tauri global type
-// declare global {
-//   interface Window {
-//     __TAURI__?: {
-//       // Add any specific Tauri properties if needed
-//     }
-//   }
-// }
 
 function App() {
   const [youtubeUrl, setYoutubeUrl] = useState<string>('');
