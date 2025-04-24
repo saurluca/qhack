@@ -5,10 +5,8 @@ import Footer from "../components/Footer";
 import DButton from "../components/dashboard/d-button";
 
 const Recipe = () => {
-  // State to manage toggle for showing healthy ingredients
   const [showHealthyOnly, setShowHealthyOnly] = useState(false);
 
-  // Hardcoded lasagna recipe data
   const recipeData = {
     title: "Banana Bread",
     description: "Quick to whip up with only a handful of pantry ingredients",
@@ -19,7 +17,6 @@ const Recipe = () => {
     pricePerPortion: "$3.50",
   };
 
-  // Hardcoded ingredients for lasagna with healthy alternatives
   const ingredients = [
     {
       id: 1,
@@ -61,7 +58,7 @@ const Recipe = () => {
         amount: "400g",
         price: "$7.99",
         imageUrl:
-          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRp5gIVqZI00g9ZDm3Utedk5ZBf_3ers7INhDqDm4Md-vlp6Sn5JAL87AwJCSNf-ah5Ndidz2JhU96aQpN2lcDZVszGwbK6AWK7hmnjlbXMZTJvH4gHcYeP",
+          "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQs6d8BHtKiPLtY285Rzhp3o7oZJ1LVJZ5MMj8dxG7N9YtSYsBs2cRoOpMvQmCO6Xrj8BEDGWq05bt-HdAaMhAdlC0ZE9VGA8oEimXPdf7jfmgEUlHLQel_",
         isHealthy: true,
       },
     },
@@ -71,20 +68,19 @@ const Recipe = () => {
       amount: "1/2 cup",
       price: "$13.79",
       imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR29a-eT_oIapG1WfVyn3aK_CEe_Y265uyfpw&s",
+        "https://m.media-amazon.com/images/I/71Lp7c4wXcL.jpg",
       isHealthy: false,
       healthyAlternative: {
         name: "Organic Coconut Oil",
         amount: "1/2 cup",
         price: "$9.49",
         imageUrl:
-          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR_gTpFb5Qufs_g53bbT9xzGDzZaMzNS3m9wkAA8tFXeUX3rD5n9XUteKCUTNgnd255Nx2J0SVjQzZWbHctmCBVveA_RNCaPzsMsFXlwtA",
+          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQc3izfdKdPUSrUnX6cxVcUQlhHdccm0nFiAKe74fIzRoVPly0yi0Wbqre4-5K4WnG-tHoemBNtMkM2NUDXN59ZYlBeCC2M76LgjgFh9gJdR6enwKK5mii7gFs",
         isHealthy: true,
       },
     },
   ];
 
-  // Map ingredients to show healthy alternatives when toggled
   const displayedIngredients = ingredients.map((ingredient) => {
     if (showHealthyOnly && !ingredient.isHealthy && ingredient.healthyAlternative) {
       return { ...ingredient.healthyAlternative, id: ingredient.id };
@@ -102,7 +98,9 @@ const Recipe = () => {
         prepTime={recipeData.prepTime}
         pricePerPortion={recipeData.pricePerPortion}
       />
-      <div className="flex justify-end pr-4">
+      
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold">Ingredients</h2>
         <label className="relative inline-flex items-center cursor-pointer">
           <input
             className="sr-only peer"
