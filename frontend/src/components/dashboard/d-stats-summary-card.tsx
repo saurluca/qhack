@@ -39,11 +39,10 @@ const DStatsSummaryCard: React.FC<DStatsSummaryCardProps> = ({ stats, title }) =
                             <div className="flex items-center space-x-2">
                                 <span className="text-gray-800 font-medium capitalize">{stat.title}</span>
                                 <span className="text-gray-500">•</span>
-                                <span className="font-semibold">{stat.value}</span>
+                                <span className="font-semibold">{stat.value}/{stat.target}</span>
                                 <span className="text-gray-500 text-sm">{stat.unit}</span>
                             </div>
                             <div className="flex items-center space-x-2">
-                                <span className="text-sm text-gray-500">{stat.target}{stat.unit}</span>
                                 <span className={`px-2 py-0.5 text-xs rounded-full ${stat.status === "good" ? "bg-green-100 text-green-800" :
                                     stat.status === "warning" ? "bg-yellow-100 text-yellow-800" :
                                         "bg-amber-100 text-amber-800"
