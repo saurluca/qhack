@@ -11,32 +11,49 @@ interface CartItemType {
   imageUrl: string;
 }
 
-// Default items if localStorage is empty
 const defaultItems: CartItemType[] = [
   {
     id: 1,
-    name: "Tomatoes",
-    description: "Fresh, organic",
-    price: 1.995,
-    quantity: 2,
-    imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82aba655",
-  },
-  {
-    id: 2,
-    name: "Spaghetti",
-    description: "Dried, 500g",
-    price: 2.49,
-    quantity: 1,
-    imageUrl: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d",
-  },
-  {
-    id: 3,
-    name: "Parmesan Cheese",
-    description: "Grated, 100g",
+    name: "Chickpeas",
+    description: "1 lb (450g)",
     price: 4.99,
     quantity: 1,
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Parmigiano_Reggiano%2C_Italien%2C_Europ%C3%A4ische_Union.jpg/960px-Parmigiano_Reggiano%2C_Italien%2C_Europ%C3%A4ische_Union.jpg",
+      "https://shop.natcofoods.com/cdn/shop/products/L3158_CHICK_PEAS_1KG_M_-_Copy_075a5fc9-33ef-4506-9f17-978d7212ea65.jpg?v=1590426501",
+  },
+  {
+    id: 2,
+    name: "Tahini",
+    description: "400ml",
+    price: 6.49,
+    quantity: 1,
+    imageUrl: "https://m.media-amazon.com/images/I/61LyaRAmbyL.jpg",
+  },
+  {
+    id: 3,
+    name: "Lemon Juice",
+    description: "200ml",
+    price: 3.99,
+    quantity: 1,
+    imageUrl:
+      "https://i5.walmartimages.com/seo/ReaLemon-100-Juice-Lemon-15-fl-oz-1-Count_24640bb3-98de-4107-9543-5147e26ae1ff.58b5e44b6cd223ecdc49f7a6e865cb99.jpeg",
+  },
+  {
+    id: 4,
+    name: "Garlic",
+    description: "450g",
+    price: 4.29,
+    quantity: 1,
+    imageUrl:
+      "https://www.purveyd.com/cdn/shop/products/PEELED-GARLIC-5LB-JAR_600x.jpg?v=1651944718",
+  },
+  {
+    id: 5,
+    name: "Extra Virgin Olive Oil",
+    description: "1/2 cup",
+    price: 13.79,
+    quantity: 1,
+    imageUrl: "https://i.ebayimg.com/images/g/1YsAAOSw0I9faNPa/s-l1200.jpg",
   },
 ];
 
