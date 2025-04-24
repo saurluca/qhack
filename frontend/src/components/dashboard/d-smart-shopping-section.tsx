@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import DButton from "./d-button";
-
+import React from "react";
 interface BudgetData {
     monthlyBudget: number;
     currentSpent: number;
@@ -31,13 +29,9 @@ interface DSmartShoppingSectionProps {
 const DSmartShoppingSection: React.FC<DSmartShoppingSectionProps> = ({
     budgetData,
 }) => {
-    const [view, setView] = useState<"spending" | "savings" | "recommendations">("spending");
-
     return (
         <div className="space-y-6">
-            {view === "spending" && (
-                <>
-                    {/* Budget Overview */}
+            {/* Budget Overview */}
                     <div className="bg-white p-4 rounded-lg shadow">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-semibold">
@@ -202,9 +196,7 @@ const DSmartShoppingSection: React.FC<DSmartShoppingSectionProps> = ({
                                 </div>
                             ))}
                         </div>
-                    </div>
-                </>
-            )}
+            </div>
         </div>
     );
 };
