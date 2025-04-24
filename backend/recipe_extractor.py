@@ -1,7 +1,6 @@
 import os
 import re
 import requests
-import json
 
 class HuggingFaceAPIProcessor:
     """Class for processing text using Hugging Face API"""

@@ -164,7 +164,7 @@ class VideoTranscriptExtractor:
                     source_type = "video_transcription"
                     return transcript, source_type, title
                 else:
-                    print(f"Transcription too short or empty, trying alternative methods")
+                    print("Transcription too short or empty, trying alternative methods")
             else:
                 print(f"API returned status code {response.status_code}, trying alternative methods")
         except Exception as e:
@@ -216,7 +216,7 @@ class VideoTranscriptExtractor:
                                 os.remove(temp_audio_file)
                             except:
                                 pass
-                            print(f"Successfully transcribed downloaded audio")
+                            print("Successfully transcribed downloaded audio")
                             source_type = "video_transcription"
                             return transcript, source_type, title
                 except Exception as file_e:
@@ -234,13 +234,13 @@ class VideoTranscriptExtractor:
         if description_context:
             context = f"Video title: {title}\n\nDescription: {description_context}\n\n"
             context += f"This appears to be a recipe video from {platform}. Please extract the recipe based on the title and description."
-            print(f"Using video metadata as context (FALLBACK 1)")
+            print("Using video metadata as context (FALLBACK 1)")
             source_type = "metadata"
             return context, source_type, title
             
         # Priority 4: Search online (last resort)
         if title and title != "Unknown recipe":
-            print(f"Searching online for recipe based on video title (LAST RESORT)")
+            print("Searching online for recipe based on video title (LAST RESORT)")
             online_recipe = VideoTranscriptExtractor.search_recipe_online(title, platform)
             if online_recipe:
                 source_type = "internet_search"
@@ -448,7 +448,7 @@ def main():
         with open(recipe_file, 'w', encoding='utf-8') as f:
             json.dump(recipe_details, f, indent=2)
         
-        print(f"\nRecipe extraction complete!")
+        print("\nRecipe extraction complete!")
         print(f"Source type: {recipe_data.get('source_type', 'unknown')}")
         print(f"Ingredients saved to: {ingredients_file}")
         print(f"Recipe details saved to: {recipe_file}")
