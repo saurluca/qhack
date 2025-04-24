@@ -8,6 +8,7 @@ interface DButtonProps {
     size?: "sm" | "md" | "lg";
     fullWidth?: boolean;
     icon?: React.ReactNode;
+    className?: string; // Add className prop
 }
 
 const DButton: React.FC<DButtonProps> = ({
@@ -18,6 +19,7 @@ const DButton: React.FC<DButtonProps> = ({
     size = "md",
     fullWidth = false,
     icon,
+    className = "", // Default to empty string
 }) => {
     const colorStyles = {
         green: {
@@ -50,8 +52,9 @@ const DButton: React.FC<DButtonProps> = ({
 
     return (
         <button
-            className={`${active ? colorStyles[color].active : colorStyles[color].inactive} ${sizeStyles[size]
-                } ${fullWidth ? "w-full" : ""} rounded-md font-small transition flex items-center justify-center`}
+            className={`${active ? colorStyles[color].active : colorStyles[color].inactive} ${
+                sizeStyles[size]
+            } ${fullWidth ? "w-full" : ""} rounded-md font-small transition flex items-center justify-center ${className}`}
             onClick={onClick}
         >
             {icon && <span className="mr-1">{icon}</span>}
