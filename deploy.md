@@ -3,9 +3,10 @@
 ## Backend
 
 ### Setup
-Haven't found a nice way to do that yet, using local venv for now
+Haven't found a nice way to automatically setup python packages, using local venv for now
 
 ### run
+We have a default hugging face key in the code, but you can add your own like this, in case it ran out.
 ```sh
 export HF_API_KEY=hf_your_api_key;
 python3 main.py -server
