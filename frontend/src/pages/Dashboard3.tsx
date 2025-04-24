@@ -8,11 +8,11 @@ import DSmartShoppingSection from "../components/dashboard/d-smart-shopping-sect
 // Mock data - in a real implementation, this would come from your backend API
 const mockNutritionData = {
   weeklyAverage: {
-    calories: 2100,
-    protein: 75,
+    calories: 1800,
+    protein: 55,
     carbs: 240,
-    fat: 60,
-    fiber: 28,
+    fat: 50,
+    fiber: 10,
   },
   recommended: {
     calories: 2000,

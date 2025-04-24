@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import DButton from "./d-button";
-import DStatCard from "./d-stat-card";
 import DRecipeItem from "./d-recipe-item";
-import { Calendar, Grid2X2 } from 'lucide-react';
+import DStatsSummaryCard from "./d-stats-summary-card";
+import { Calendar } from 'lucide-react';
+
 interface NutritionData {
     weeklyAverage: {
         [key: string]: number;
@@ -38,57 +39,36 @@ const DNutritionalSection: React.FC<DNutritionalSectionProps> = ({
     nutritionData,
     recentRecipes,
 }) => {
-    const getNutrientTip = (nutrient: string, percentage: number): string => {
-        if (percentage < 80) {
-            return `Increase ${nutrient} intake by adding more ${nutrient === "protein"
-                ? "lean meats, beans, and nuts"
-                : nutrient === "carbs"
-                    ? "whole grains and fruits"
-                    : nutrient === "fat"
-                        ? "healthy oils and nuts"
-                        : nutrient === "fiber"
-                            ? "vegetables and whole grains"
-                            : "nutritious foods"
-                }.`;
-        } else if (percentage > 120) {
-            return `Reduce ${nutrient} consumption by limiting ${nutrient === "protein"
-                ? "processed meats"
-                : nutrient === "carbs"
-                    ? "refined sugars"
-                    : nutrient === "fat"
-                        ? "fried foods"
-                        : nutrient === "calories"
-                            ? "portion sizes"
-                            : "processed foods"
-                }.`;
-        }
-        return "";
-    };
-
     const calculatePercentage = (actual: number, recommended: number): number => {
         return Math.round((actual / recommended) * 100);
     };
 
+    const determineStatus = (percentage: number): "good" | "warning" | "attention" => {
+        if (percentage >= 85 && percentage <= 115) return "good";
+        if ((percentage >= 70 && percentage < 85) || (percentage > 115 && percentage <= 130)) return "warning";
+        return "attention";
+    };
+
+    // Prepare stats for the summary card
+    const nutritionStats = Object.entries(nutritionData.weeklyAverage).map(([nutrient, value]) => {
+        const recommended = nutritionData.recommended[nutrient];
+        const percentage = calculatePercentage(value, recommended);
+        return {
+            title: nutrient,
+            value: value,
+            unit: nutrient === "calories" ? "kcal" : "g",
+            target: recommended,
+            percentage: percentage,
+            status: determineStatus(percentage)
+        };
+    });
+
     return (
         <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                {Object.entries(nutritionData.weeklyAverage).map(([nutrient, value]) => {
-                    const recommended = nutritionData.recommended[nutrient];
-                    const percentage = calculatePercentage(value, recommended);
-                    const tip = getNutrientTip(nutrient, percentage);
-
-                    return (
-                        <DStatCard
-                            key={nutrient}
-                            title={nutrient}
-                            value={value}
-                            unit={nutrient === "calories" ? "kcal" : "g"}
-                            target={recommended}
-                            tip={tip}
-                        />
-                    );
-                })}
-            </div>
+            <DStatsSummaryCard
+                title="Nutritional Balance"
+                stats={nutritionStats}
+            />
 
             <div className="bg-white p-4 rounded-lg shadow">
                 <h3 className="text-lg font-semibold mb-3">Recent Meals</h3>
@@ -110,7 +90,7 @@ const DNutritionalSection: React.FC<DNutritionalSectionProps> = ({
                         icon={
                             <Calendar className="h-4 w-4" />
                         }
-                    />      
+                    />
                 </div>
             </div>
         </div>
